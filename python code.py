@@ -205,77 +205,75 @@ if not data.empty:
         else:
             st.warning("No players match current filters.")
 
-    # --- OPTIMAL COMBINATIONS SECTION ---
-st.markdown("---")
-st.markdown("## ⚽ Optimal Player Trio Combination")
-
-if not combos_df.empty:
-    selected_row = st.selectbox(
-        "Select a trio to visualize",
-        combos_df.index,
-        format_func=lambda idx: 
-            f"{combos_df.loc[idx, 'Player 1']} + {combos_df.loc[idx, 'Player 2']} + {combos_df.loc[idx, 'Player 3']}"
-    )
-    row = combos_df.loc[selected_row]
-    p1, p2, p3 = row['Player 1'], row['Player 2'], row['Player 3']
-    img1 = get_image_url(p1, players_df)
-    img2 = get_image_url(p2, players_df)
-    img3 = get_image_url(p3, players_df)
-    nodes = {
-        p1: (0.5, 1.0),
-        p2: (0.15, 0.2),
-        p3: (0.85, 0.2)
-    }
-    images = {p1: img1, p2: img2, p3: img3}
-    labels = {
-        p1: f"<b>{p1}</b><br>({row['Position 1']})",
-        p2: f"<b>{p2}</b><br>({row['Position 2']})",
-        p3: f"<b>{p3}</b><br>({row['Position 3']})"
-    }
-    # Center the chart
-    st.markdown('<div style="display: flex; justify-content: center;">', unsafe_allow_html=True)
-    fig = go.Figure()
-    # Draw triangle as lines
-    x_coords = [nodes[p1][0], nodes[p2][0], nodes[p3][0], nodes[p1][0]]
-    y_coords = [nodes[p1][1], nodes[p2][1], nodes[p3][1], nodes[p1][1]]
-    fig.add_trace(go.Scatter(
-        x=x_coords, y=y_coords,
-        mode="lines",
-        line=dict(color="#1e293b", width=4),
-        hoverinfo='skip',
-        showlegend=False
-    ))
-    # Add images and labels
-    for name, (x, y) in nodes.items():
-        fig.add_layout_image(
-            dict(
-                source=images[name],
-                xref="x", yref="y",
-                x=x-0.08, y=y+0.06,
-                sizex=0.16, sizey=0.16,
-                xanchor="center", yanchor="middle",
-                layer="above"
-            )
+    # --- OPTIMAL COMBINATIONS SECTION (centered, chart only) ---
+    st.markdown("---")
+    st.markdown("## ⚽ Optimal Player Trio Combination")
+    if not combos_df.empty:
+        selected_row = st.selectbox(
+            "Select a trio to visualize",
+            combos_df.index,
+            format_func=lambda idx: 
+                f"{combos_df.loc[idx, 'Player 1']} + {combos_df.loc[idx, 'Player 2']} + {combos_df.loc[idx, 'Player 3']}"
         )
+        row = combos_df.loc[selected_row]
+        p1, p2, p3 = row['Player 1'], row['Player 2'], row['Player 3']
+        img1 = get_image_url(p1, players_df)
+        img2 = get_image_url(p2, players_df)
+        img3 = get_image_url(p3, players_df)
+        nodes = {
+            p1: (0.5, 1.0),
+            p2: (0.15, 0.2),
+            p3: (0.85, 0.2)
+        }
+        images = {p1: img1, p2: img2, p3: img3}
+        labels = {
+            p1: f"<b>{p1}</b><br>({row['Position 1']})",
+            p2: f"<b>{p2}</b><br>({row['Position 2']})",
+            p3: f"<b>{p3}</b><br>({row['Position 3']})"
+        }
+        st.markdown('<div style="display: flex; justify-content: center;">', unsafe_allow_html=True)
+        fig = go.Figure()
+        # Draw triangle as lines
+        x_coords = [nodes[p1][0], nodes[p2][0], nodes[p3][0], nodes[p1][0]]
+        y_coords = [nodes[p1][1], nodes[p2][1], nodes[p3][1], nodes[p1][1]]
         fig.add_trace(go.Scatter(
-            x=[x], y=[y-0.13], text=[labels[name]], mode="text",
-            textfont=dict(color="#1e293b", size=16),
+            x=x_coords, y=y_coords,
+            mode="lines",
+            line=dict(color="#1e293b", width=4),
             hoverinfo='skip',
             showlegend=False
         ))
-    fig.update_xaxes(visible=False, range=[0, 1])
-    fig.update_yaxes(visible=False, range=[0, 1.15])
-    fig.update_layout(
-        width=650, height=500,
-        plot_bgcolor="#f8fafc",
-        paper_bgcolor="#f8fafc",
-        margin=dict(l=0, r=0, t=10, b=0),
-        showlegend=False
-    )
-    st.plotly_chart(fig)
-    st.markdown('</div>', unsafe_allow_html=True)
-else:
-    st.warning("No trio combination data available.")
+        # Add images and labels
+        for name, (x, y) in nodes.items():
+            fig.add_layout_image(
+                dict(
+                    source=images[name],
+                    xref="x", yref="y",
+                    x=x-0.08, y=y+0.06,
+                    sizex=0.16, sizey=0.16,
+                    xanchor="center", yanchor="middle",
+                    layer="above"
+                )
+            )
+            fig.add_trace(go.Scatter(
+                x=[x], y=[y-0.13], text=[labels[name]], mode="text",
+                textfont=dict(color="#1e293b", size=16),
+                hoverinfo='skip',
+                showlegend=False
+            ))
+        fig.update_xaxes(visible=False, range=[0, 1])
+        fig.update_yaxes(visible=False, range=[0, 1.15])
+        fig.update_layout(
+            width=650, height=500,
+            plot_bgcolor="#f8fafc",
+            paper_bgcolor="#f8fafc",
+            margin=dict(l=0, r=0, t=10, b=0),
+            showlegend=False
+        )
+        st.plotly_chart(fig)
+        st.markdown('</div>', unsafe_allow_html=True)
+    else:
+        st.warning("No trio combination data available.")
 
     # --- PLAYER PERFORMANCE ANALYSIS TABLE ---
     if not filtered_data.empty:
