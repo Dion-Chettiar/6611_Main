@@ -1,0 +1,94 @@
+Player_std,Squad_std,Age,Position,Goals,Assists,xAG,KeyPasses,PassAccuracy,Crosses,ThrowIns,Switches,Carries,ProgCarries,ProgReceiving,Passes_PenaltyArea,GCA_LivePass,GCA_DeadPass,Actual_PrgP,Predicted_PrgP,PrgP_Accuracy_%,Difference,Interpretation,PassStyle_Type,Image_url
+Philip Billing,Bournemouth,27,MF,2,2,3.2,23,75.2,29,5,6,366,22,63,15,40,2,53,54.81,96.7,-1.81,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/1.jpg
+Luca Raimund,Stuttgart,18,"FW,MF",0,0,0,0,69.6,1,0,0,18,0,2,1,1,0,1,2.22,45.05,-1.22,As Expected,Weak Link,https://randomuser.me/api/portraits/men/2.jpg
+Wladimiro Falcone,Lecce,30,GK,0,0,0,0,61.3,0,0,1,707,0,0,0,8,3,0,0.57,0,-0.57,As Expected,Weak Link,https://randomuser.me/api/portraits/men/3.jpg
+Ronaël Pierre-Gabriel,Espanyol,24,DF,1,0,0.3,2,74,10,28,0,69,7,16,1,4,0,7,6.14,114.01,0.86,As Expected,Weak Link,https://randomuser.me/api/portraits/men/4.jpg
+Martín Zubimendi,Real Sociedad,24,MF,4,1,1.5,16,85.7,7,2,4,942,34,27,15,47,0,152,125.98,120.65,26.02,Overperforming (underrated),Elite Passer,https://randomuser.me/api/portraits/men/5.jpg
+Vagner Gonçalves,Metz,25,FW,0,0,0.1,2,58.5,10,2,1,29,2,5,1,3,2,2,4.35,45.98,-2.35,As Expected,Weak Link,https://randomuser.me/api/portraits/men/6.jpg
+Jesus Rodríguez,Betis,19,FW,2,0,0.2,8,72.8,18,4,0,361,53,99,19,17,0,35,37.74,92.74,-2.74,As Expected,Risky Passer,https://randomuser.me/api/portraits/men/7.jpg
+Adrian Benedyczak,Parma,24,"FW,MF",0,0,0.1,2,67.3,1,0,1,44,3,12,0,3,0,3,2.88,104.17,0.12,As Expected,Weak Link,https://randomuser.me/api/portraits/men/8.jpg
+José Gragera,Espanyol,24,MF,0,0,0,1,87.6,0,0,1,119,1,3,0,4,0,14,13.79,101.52,0.21,As Expected,Safe Passer,https://randomuser.me/api/portraits/men/9.jpg
+Toni Villa,Girona,27,"MF,FW",1,3,1.6,14,76.7,27,7,0,323,37,91,8,27,3,38,28.39,133.85,9.61,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/10.jpg
+Alexander Sørloth,Real Sociedad,26,FW,12,3,4.2,31,68.4,8,1,1,458,41,132,10,41,0,20,42.05,47.56,-22.05,Underperforming (not converting),Weak Link,https://randomuser.me/api/portraits/men/11.jpg
+Romain Esse,Crystal Palace,20,MF,1,1,0.4,3,75,0,0,0,32,1,11,1,6,0,7,4.12,169.9,2.88,As Expected,Safe Passer,https://randomuser.me/api/portraits/men/12.jpg
+Mikel Merino,Real Sociedad,27,MF,5,3,1.9,20,76.2,19,3,13,892,26,99,27,51,0,163,138.65,117.56,24.35,Overperforming (underrated),Elite Passer,https://randomuser.me/api/portraits/men/13.jpg
+Saïd Benrahma,West Ham,26,"FW,MF",6,3,4.5,48,75,83,8,2,699,109,237,23,68,2,82,72.05,113.81,9.95,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/14.jpg
+Tim Iroegbunam,Everton,21,MF,0,1,0.2,3,72.8,1,0,0,127,8,9,1,6,0,15,14.46,103.73,0.54,As Expected,Weak Link,https://randomuser.me/api/portraits/men/15.jpg
+Carlo Boukhalfa,St. Pauli,26,MF,2,0,1.1,11,71.3,10,0,1,290,10,44,7,25,0,41,36.46,112.45,4.54,As Expected,Risky Passer,https://randomuser.me/api/portraits/men/16.jpg
+Ivan Ilić,Torino,24,MF,1,0,1.1,9,83.4,27,8,3,412,24,41,16,23,4,45,55.85,80.57,-10.85,Underperforming (not converting),Elite Passer,https://randomuser.me/api/portraits/men/17.jpg
+Denis Huseinbasic,Köln,21,"MF,FW",4,1,0.3,5,76.6,12,2,1,229,12,45,6,8,1,34,22.48,151.25,11.52,Overperforming (underrated),Elite Passer,https://randomuser.me/api/portraits/men/18.jpg
+Ralf Fährmann,Schalke 04,33,GK,0,0,0,0,68.8,0,0,0,270,0,0,0,1,3,0,0.19,0,-0.19,As Expected,Weak Link,https://randomuser.me/api/portraits/men/19.jpg
+Edin Džeko,Inter,35,FW,13,6,3.9,38,70.6,35,2,11,614,47,207,34,76,0,107,89.56,119.47,17.44,Overperforming (underrated),Risky Passer,https://randomuser.me/api/portraits/men/20.jpg
+Felipe Anderson,Lazio,29,FW,9,2,4.8,47,77.5,50,21,8,967,83,224,47,79,1,114,125.67,90.71,-11.67,Underperforming (not converting),Elite Passer,https://randomuser.me/api/portraits/men/21.jpg
+Manuel Lazzari,Lazio,29,DF,0,2,1.3,9,84.7,56,145,2,609,73,104,12,27,0,62,59.71,103.84,2.29,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/22.jpg
+Kassoum Ouattara,Monaco,18,"DF,FW",1,0,1.3,6,64.7,35,59,0,255,32,67,6,10,1,22,22.51,97.73,-0.51,As Expected,Weak Link,https://randomuser.me/api/portraits/men/23.jpg
+Amadou Koné,Reims,18,MF,0,0,0.2,3,79.7,1,0,2,224,2,2,1,6,0,28,21.82,128.32,6.18,As Expected,Safe Passer,https://randomuser.me/api/portraits/men/24.jpg
+Jakov Medić,Bochum,26,DF,1,0,0.2,3,87.4,1,0,2,498,2,3,4,9,0,27,39.7,68.01,-12.7,Underperforming (not converting),Safe Passer,https://randomuser.me/api/portraits/men/25.jpg
+Marcus Rashford,Manchester Utd,27,"FW,MF",4,1,2.1,15,73.8,27,4,5,293,20,79,16,24,1,21,38.36,54.74,-17.36,Underperforming (not converting),Weak Link,https://randomuser.me/api/portraits/men/26.jpg
+Joe Willock,Newcastle Utd,22,MF,3,6,6,39,81.7,51,8,3,784,97,152,34,67,0,121,106.34,113.79,14.66,Overperforming (underrated),Elite Passer,https://randomuser.me/api/portraits/men/27.jpg
+Yannick Carrasco,Atlético Madrid,28,"DF,MF",7,3,4.1,47,79.1,107,66,7,822,146,264,36,59,14,84,86.55,97.05,-2.55,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/28.jpg
+Kiernan Dewsbury-Hall,Chelsea,26,"MF,FW",0,1,1.1,3,83.6,2,0,1,93,5,11,3,5,0,14,12.62,110.94,1.38,As Expected,Safe Passer,https://randomuser.me/api/portraits/men/29.jpg
+Aaron Hickey,Brentford,20,DF,0,1,0.4,6,82.9,27,82,1,616,41,47,13,14,1,81,66.96,120.97,14.04,Overperforming (underrated),Elite Passer,https://randomuser.me/api/portraits/men/30.jpg
+Marc Guéhi,Crystal Palace,23,DF,0,1,0.6,7,86.9,3,5,18,898,15,7,5,17,0,67,80.7,83.02,-13.7,Underperforming (not converting),Elite Passer,https://randomuser.me/api/portraits/men/31.jpg
+Harvey Barnes,Newcastle Utd,25,"FW,MF",5,3,3.2,13,76.5,12,4,2,266,45,79,17,18,0,34,32.65,104.13,1.35,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/32.jpg
+Felix Nmecha,Dortmund,22,MF,1,2,0.9,14,83.6,3,0,4,340,19,28,7,26,0,45,55,81.82,-10,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/33.jpg
+Rémy Labeau Lascary,Lens,19,"FW,MF",0,0,0,2,79.3,3,0,0,40,3,16,1,1,0,3,3.63,82.64,-0.63,As Expected,Safe Passer,https://randomuser.me/api/portraits/men/34.jpg
+Sofyan Amrabat,Manchester Utd,26,"MF,DF",0,0,0.3,6,87,7,11,8,489,6,10,6,19,0,66,60.72,108.7,5.28,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/35.jpg
+Nicolò Zaniolo,Aston Villa,24,"FW,MF",2,0,1,10,65.8,18,1,2,268,35,60,5,20,0,30,22.58,132.86,7.42,As Expected,Risky Passer,https://randomuser.me/api/portraits/men/36.jpg
+Ibrahim Sangaré,Nott'ham Forest,27,MF,0,1,0.4,4,85.5,2,0,1,158,1,3,4,7,0,24,21.38,112.25,2.62,As Expected,Safe Passer,https://randomuser.me/api/portraits/men/37.jpg
+Marvelous Nakamba,Luton Town,29,MF,0,0,0.4,7,84.2,4,3,5,224,1,5,2,13,0,36,34.65,103.9,1.35,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/38.jpg
+Aleksandar Kolarov,Inter,35,DF,0,0,0,0,81.6,0,0,0,32,1,0,1,0,0,3,4.7,63.83,-1.7,As Expected,Safe Passer,https://randomuser.me/api/portraits/men/39.jpg
+Ethan Mbappé,Lille,18,"MF,FW",0,0,1.5,6,75.5,14,0,2,107,6,32,5,10,4,8,12.58,63.59,-4.58,As Expected,Safe Passer,https://randomuser.me/api/portraits/men/40.jpg
+Xeka,Lille,26,MF,3,0,1.4,14,78.6,34,1,13,614,12,22,5,20,6,73,77.72,93.93,-4.72,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/41.jpg
+Adrien Rabiot,Juventus,28,MF,5,3,4.1,26,82.2,45,25,7,893,72,106,23,54,0,120,131.04,91.58,-11.04,Underperforming (not converting),Elite Passer,https://randomuser.me/api/portraits/men/42.jpg
+Joshua Acheampong,Chelsea,17,DF,0,0,0,0,50,0,1,0,1,0,0,0,0,1,0,0.04,0,-0.04,As Expected,Weak Link,https://randomuser.me/api/portraits/men/43.jpg
+Maximilian Wittek,Bochum,27,"DF,FW",3,1,1.4,24,62.5,51,71,3,278,17,64,19,23,12,49,38.7,126.61,10.3,Overperforming (underrated),Risky Passer,https://randomuser.me/api/portraits/men/44.jpg
+Tom Louchet,Nice,22,"DF,MF",1,0,1.2,14,81.7,35,53,0,246,19,37,9,21,2,36,34.57,104.14,1.43,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/45.jpg
+Daler Kuzyaev,Le Havre,32,MF,1,0,0.6,2,81.2,6,0,1,140,4,9,3,2,1,32,15.22,210.25,16.78,Overperforming (underrated),Elite Passer,https://randomuser.me/api/portraits/men/46.jpg
+Paul Jaeckel,Union Berlin,23,DF,0,0,0.6,6,79.2,4,8,12,763,13,5,3,13,0,71,73.56,96.52,-2.56,As Expected,Elite Passer,https://randomuser.me/api/portraits/men/47.jpg
+Woyo Coulibaly,Leicester City,26,DF,0,0,0,0,84.2,0,13,0,48,4,2,0,0,0,3,3.91,76.73,-0.91,As Expected,Safe Passer,https://randomuser.me/api/portraits/men/48.jpg
+Emmanuel Gyasi,Empoli,29,"DF,FW",1,2,1.5,10,74.9,23,41,0,398,15,60,14,17,2,41,47.83,85.72,-6.83,As Expected,Risky Passer,https://randomuser.me/api/portraits/men/49.jpg
+Thomas Mangani,Angers,34,MF,7,2,1.3,28,78.1,88,2,23,933,8,31,14,35,15,165,123.15,133.98,41.85,Overperforming (underrated),Elite Passer,https://randomuser.me/api/portraits/men/50.jpg
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
