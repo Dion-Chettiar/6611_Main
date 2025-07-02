@@ -131,7 +131,7 @@ def load_data():
             'Sub Early Probability': 'Sub Early Probability'
         })
         
-        return merged_data
+        return merged_data, players_df, combos_df
         
     except Exception as e:
         st.error(f"Error loading data: {e}")
