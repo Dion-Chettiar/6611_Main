@@ -444,6 +444,10 @@ if not data.empty:
             
             st.plotly_chart(fig_hist, use_container_width=True)
 
+else:
+    st.error("❌ No data available. Please check your GitHub CSV files.")
+
+
         # --- Helper Function ---
 def get_image_url(player_name):
     row = players_df[players_df['Player_std'] == player_name]
@@ -516,6 +520,3 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig)
-
-else:
-    st.error("❌ No data available. Please check your GitHub CSV files.")
