@@ -99,10 +99,14 @@ def load_data():
         # Your GitHub raw URLs
         sub_optimizer_url = "https://raw.githubusercontent.com/Dion-Chettiar/Streamlit_Dashboard/refs/heads/main/sub_optimizer%202.csv"
         performance_url = "https://raw.githubusercontent.com/Dion-Chettiar/Streamlit_Dashboard/refs/heads/main/Performance_Dropoff_Per_Player.csv"
+        players_df_url = "https://raw.githubusercontent.com/Dion-Chettiar/6611_Main/refs/heads/main/Praveen_Dataset.csv"
+        combos_df_url = "https://raw.githubusercontent.com/Dion-Chettiar/6611_Main/refs/heads/main/data.parquet"
         
         # Load CSV files
         sub_data = pd.read_csv(sub_optimizer_url)
         perf_data = pd.read_csv(performance_url)
+        players_df = pd.read_csv(players_df_url)
+        combos_df = pd.read_parquet(combos_df_url)
         
         # Clean and process data
         sub_data.columns = sub_data.columns.str.strip()
@@ -439,6 +443,79 @@ if not data.empty:
             )
             
             st.plotly_chart(fig_hist, use_container_width=True)
+
+        # --- Helper Function ---
+def get_image_url(player_name):
+    row = players_df[players_df['Player_std'] == player_name]
+    if not row.empty:
+        return row.iloc[0]['image url']
+    # fallback icon if not found
+    return "https://cdn-icons-png.flaticon.com/512/1055/1055687.png"
+
+# --- Streamlit UI ---
+st.title("Optimal Player Trio Combinations")
+
+selected_row = st.selectbox(
+    "Select a trio to visualize",
+    combos_df.index,
+    format_func=lambda idx: 
+        f"{combos_df.loc[idx, 'Player 1']} + {combos_df.loc[idx, 'Player 2']} + {combos_df.loc[idx, 'Player 3']}"
+)
+
+row = combos_df.loc[selected_row]
+p1, p2, p3 = row['Player 1'], row['Player 2'], row['Player 3']
+img1, img2, img3 = get_image_url(p1), get_image_url(p2), get_image_url(p3)
+
+nodes = {
+    p1: (0.5, 1.0),
+    p2: (0.15, 0.2),
+    p3: (0.85, 0.2)
+}
+images = {p1: img1, p2: img2, p3: img3}
+labels = {
+    p1: f"<b>{p1} ({row['Position 1']})</b>",
+    p2: f"{p2} ({row['Position 2']})",
+    p3: f"{p3} ({row['Position 3']})"
+}
+
+fig = go.Figure()
+
+# Draw arrows
+fig.add_annotation(x=nodes[p1][0], y=nodes[p1][1], ax=nodes[p2][0], ay=nodes[p2][1],
+    showarrow=True, arrowhead=2, arrowsize=1.2, arrowwidth=2, arrowcolor="#1e293b")
+fig.add_annotation(x=nodes[p1][0], y=nodes[p1][1], ax=nodes[p3][0], ay=nodes[p3][1],
+    showarrow=True, arrowhead=2, arrowsize=1.2, arrowwidth=2, arrowcolor="#1e293b")
+fig.add_annotation(x=nodes[p2][0], y=nodes[p2][1], ax=nodes[p3][0], ay=nodes[p3][1],
+    showarrow=True, arrowhead=2, arrowsize=1.2, arrowwidth=2, arrowcolor="#1e293b")
+
+# Add images and labels
+for name, (x, y) in nodes.items():
+    fig.add_layout_image(
+        dict(
+            source=images[name],
+            xref="x", yref="y",
+            x=x-0.08, y=y+0.06,
+            sizex=0.16, sizey=0.16,
+            xanchor="center", yanchor="middle",
+            layer="above"
+        )
+    )
+    fig.add_trace(go.Scatter(
+        x=[x], y=[y-0.13], text=[labels[name]], mode="text",
+        textfont=dict(color="#1e293b", size=16)
+    ))
+
+fig.update_xaxes(visible=False, range=[0, 1])
+fig.update_yaxes(visible=False, range=[0, 1.15])
+fig.update_layout(
+    width=350, height=400,
+    plot_bgcolor="#f8fafc",
+    paper_bgcolor="#f8fafc",
+    margin=dict(l=0, r=0, t=10, b=0),
+    showlegend=False
+)
+
+st.plotly_chart(fig)
 
 else:
     st.error("❌ No data available. Please check your GitHub CSV files.")
