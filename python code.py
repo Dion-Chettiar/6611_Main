@@ -201,7 +201,7 @@ if not data.empty:
         else:
             st.warning("No players match current filters.")
 
-    # --- TRIO CHART (SINGLE DATASET, CENTERED) ---
+    # --- TRIO CHART (SINGLE DATASET, CENTERED, ALL IMAGES ON VERTICES) ---
     st.markdown("---")
     st.markdown("## ⚽ Optimal Player Trio Combination")
     if not trios.empty:
@@ -239,19 +239,20 @@ if not data.empty:
             hoverinfo='skip',
             showlegend=False
         ))
-        # Add images and labels
+        # Add images and labels with visually balanced offsets
         for name, (x, y) in nodes.items():
-            if name == p3:
-                img_x = x + 0.0  # Move image right
-                sizex, sizey, opacity = 0.22, 0.22, 1
-            else:
-                img_x = x - 0.08
-                sizex, sizey, opacity = 0.22, 0.22, 1.0
+            if name == p1:  # Top vertex
+                img_x, img_y = x, y + 0.07
+            elif name == p2:  # Bottom left
+                img_x, img_y = x - 0.04, y - 0.04
+            else:  # Bottom right
+                img_x, img_y = x + 0.04, y - 0.04
+            sizex, sizey, opacity = 0.18, 0.18, 1.0
             fig.add_layout_image(
                 dict(
                     source=images[name],
                     xref="x", yref="y",
-                    x=img_x, y=y,
+                    x=img_x, y=img_y,
                     sizex=sizex, sizey=sizey,
                     xanchor="center", yanchor="middle",
                     layer="above",
