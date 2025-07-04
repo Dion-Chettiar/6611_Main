@@ -219,7 +219,7 @@ if not data.empty:
         nodes = {
             p1: (0.5, 1.0),
             p2: (0.15, 0.2),
-            p3: (0.85, 0.2)
+            p3: (1.05, 0.2)
         }
         images = {p1: img1, p2: img2, p3: img3}
         labels = {
@@ -246,7 +246,7 @@ if not data.empty:
                     source=images[name],
                     xref="x", yref="y",
                     x=x-0.08, y=y+0.06,
-                    sizex=0.16, sizey=0.16,
+                    sizex=0.22, sizey=0.22,
                     xanchor="center", yanchor="middle",
                     layer="above"
                 )
