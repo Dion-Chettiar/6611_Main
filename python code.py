@@ -246,8 +246,8 @@ if not data.empty:
             elif name == p2:  # Bottom left
                 img_x, img_y = x - 0.04, y - 0.04
             else:  # Bottom right
-                img_x, img_y = x + 0.04, y - 0.04
-            sizex, sizey, opacity = 0.18, 0.18, 1.0
+                img_x, img_y = x + 0.0, y - 0.02
+            sizex, sizey, opacity = 0.22, 0.22, 1.0
             fig.add_layout_image(
                 dict(
                     source=images[name],
