@@ -251,7 +251,7 @@ if not data.empty:
                 dict(
                     source=images[name],
                     xref="x", yref="y",
-                    x=img_x, y=y+0.0,
+                    x=img_x, y=y+0.06,
                     sizex=sizex, sizey=sizey,
                     xanchor="center", yanchor="middle",
                     layer="above",
