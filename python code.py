@@ -42,10 +42,10 @@ def load_data():
     try:
         sub_optimizer_url = "https://raw.githubusercontent.com/Dion-Chettiar/Streamlit_Dashboard/refs/heads/main/sub_optimizer%202.csv"
         performance_url = "https://raw.githubusercontent.com/Dion-Chettiar/Streamlit_Dashboard/refs/heads/main/Performance_Dropoff_Per_Player.csv"
-        trios_url = "https://raw.githubusercontent.com/Dion-Chettiar/6611_Main/refs/heads/main/trios.parquet"  # Update with your actual file path or URL
+        trios_url = "trio_combinations_with_images.csv"  # Update with your actual file path or URL
         sub_data = pd.read_csv(sub_optimizer_url)
         perf_data = pd.read_csv(performance_url)
-        trios = pd.read_parquet(trios_url)
+        trios = pd.read_csv(trios_url)
         sub_data.columns = sub_data.columns.str.strip()
         perf_data.columns = perf_data.columns.str.strip()
         merged_data = pd.merge(
@@ -215,31 +215,12 @@ if not data.empty:
         row = trios.loc[selected_row]
         p1, p2, p3 = row['Player 1'], row['Player 2'], row['Player 3']
         pos1, pos2, pos3 = row['Position 1'], row['Position 2'], row['Position 3']
-        img1, img2, img3 = row['Img_Url1'], row['Img_Url2'], row['Img_Url3']
+        img1, img2, img3 = row['Image URL 1'], row['Image URL 2'], row['Image URL 3']
         nodes = {
             p1: (0.5, 1.0),
             p2: (0.15, 0.2),
             p3: (0.85, 0.2)
         }
-        for name, (x, y) in nodes.items():
-    if name == p3:
-        # Move image right by increasing x offset, not the node itself
-        img_x = x + 0.08  # Try 0.08 or adjust as needed
-        sizex, sizey, opacity = 0.22, 0.22, 0.85
-    else:
-        img_x = x - 0.08
-        sizex, sizey, opacity = 0.16, 0.16, 1.0
-    fig.add_layout_image(
-        dict(
-            source=images[name],
-            xref="x", yref="y",
-            x=img_x, y=y+0.06,
-            sizex=sizex, sizey=sizey,
-            xanchor="center", yanchor="middle",
-            layer="above",
-            opacity=opacity
-        )
-    )
         images = {p1: img1, p2: img2, p3: img3}
         labels = {
             p1: f"<b>{p1}</b><br>({pos1})",
@@ -260,14 +241,21 @@ if not data.empty:
         ))
         # Add images and labels
         for name, (x, y) in nodes.items():
+            if name == p3:
+                img_x = x + 0.08  # Move image right
+                sizex, sizey, opacity = 0.22, 0.22, 0.85
+            else:
+                img_x = x - 0.08
+                sizex, sizey, opacity = 0.16, 0.16, 1.0
             fig.add_layout_image(
                 dict(
                     source=images[name],
                     xref="x", yref="y",
-                    x=x-0.08, y=y+0.06,
-                    sizex=0.22, sizey=0.22,
+                    x=img_x, y=y+0.06,
+                    sizex=sizex, sizey=sizey,
                     xanchor="center", yanchor="middle",
-                    layer="above"
+                    layer="above",
+                    opacity=opacity
                 )
             )
             fig.add_trace(go.Scatter(
@@ -276,7 +264,7 @@ if not data.empty:
                 hoverinfo='skip',
                 showlegend=False
             ))
-        fig.update_xaxes(visible=False, range=[0, 1])
+        fig.update_xaxes(visible=False, range=[0, 1.2])
         fig.update_yaxes(visible=False, range=[0, 1.15])
         fig.update_layout(
             width=650, height=500,
