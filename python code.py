@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
-    page_title="Soccer Analytics Dashboard",
+    page_title="XYZ",
     page_icon="⚽",
     layout="wide",
     initial_sidebar_state="expanded"
