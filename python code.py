@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
-    page_title="XYZ",
+    page_title="Soccer Analytics Dashboard",
     page_icon="⚽",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -82,7 +82,7 @@ data, trios = load_data()
 # --- DASHBOARD HEADER ---
 st.markdown("""
 <div style="text-align: center; padding: 2rem 0;">
-    <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">⚽ Soccer Analytics Dashboard</h1>
+    <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">ELITE NOW</h1>
     <p style="color: #9ca3af; font-size: 1.2rem;">Advanced performance analysis with modern visualization</p>
 </div>
 """, unsafe_allow_html=True)
