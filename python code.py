@@ -243,7 +243,7 @@ if not data.empty:
         for name, (x, y) in nodes.items():
             if name == p3:
                 img_x = x + 0.08  # Move image right
-                sizex, sizey, opacity = 0.50, 0.22, 0.85
+                sizex, sizey, opacity = 0.16, 0.22, 0.85
             else:
                 img_x = x - 0.08
                 sizex, sizey, opacity = 0.16, 0.16, 1.0
