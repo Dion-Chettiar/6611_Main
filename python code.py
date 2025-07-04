@@ -246,7 +246,7 @@ if not data.empty:
                 sizex, sizey, opacity = 0.22, 0.22, 1
             else:
                 img_x = x - 0.08
-                sizex, sizey, opacity = 0.16, 0.16, 1.0
+                sizex, sizey, opacity = 0.22, 0.22, 1.0
             fig.add_layout_image(
                 dict(
                     source=images[name],
