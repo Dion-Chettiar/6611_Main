@@ -244,9 +244,9 @@ if not data.empty:
             if name == p1:  # Top vertex
                 img_x, img_y = x, y + 0.07
             elif name == p2:  # Bottom left
-                img_x, img_y = x - 0.04, y + 0.02
+                img_x, img_y = x - 0.0, y + 0.03
             else:  # Bottom right
-                img_x, img_y = x + 0.0, y + 0.02
+                img_x, img_y = x + 0.0, y + 0.03
             sizex, sizey, opacity = 0.22, 0.22, 1.0
             fig.add_layout_image(
                 dict(
