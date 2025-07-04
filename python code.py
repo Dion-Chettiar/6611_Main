@@ -3,14 +3,15 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Page configuration with dark theme
+# --- PAGE CONFIGURATION ---
 st.set_page_config(
     page_title="Soccer Analytics Dashboard",
+    page_icon="⚽",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Modern Dark Corporate CSS Styling
+# --- MODERN DARK THEME CSS ---
 st.markdown("""
 <style>
     .main { padding-top: 1rem; background-color: #0E1117; }
@@ -35,17 +36,16 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# --- DATA LOADING ---
 @st.cache_data
 def load_data():
     try:
         sub_optimizer_url = "https://raw.githubusercontent.com/Dion-Chettiar/Streamlit_Dashboard/refs/heads/main/sub_optimizer%202.csv"
         performance_url = "https://raw.githubusercontent.com/Dion-Chettiar/Streamlit_Dashboard/refs/heads/main/Performance_Dropoff_Per_Player.csv"
-        players_df_url = "https://raw.githubusercontent.com/Dion-Chettiar/6611_Main/refs/heads/main/Praveen_Dataset.csv"
-        combos_df_url = "https://raw.githubusercontent.com/Dion-Chettiar/6611_Main/refs/heads/main/data.parquet"
+        trios_url = "https://raw.githubusercontent.com/Dion-Chettiar/6611_Main/refs/heads/main/trios.parquet"  # Update with your actual file path or URL
         sub_data = pd.read_csv(sub_optimizer_url)
         perf_data = pd.read_csv(performance_url)
-        players_df = pd.read_csv(players_df_url)
-        combos_df = pd.read_parquet(combos_df_url)
+        trios = pd.read_parquet(trios_url)
         sub_data.columns = sub_data.columns.str.strip()
         perf_data.columns = perf_data.columns.str.strip()
         merged_data = pd.merge(
@@ -61,18 +61,10 @@ def load_data():
             'Sub_Recommendation': 'Sub Recommendation',
             'Sub Early Probability': 'Sub Early Probability'
         })
-        return merged_data, players_df, combos_df
+        return merged_data, trios
     except Exception as e:
         st.error(f"Error loading data: {e}")
-        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
-
-def get_image_url(player_name, players_df):
-    if players_df.empty:
-        return "https://cdn-icons-png.flaticon.com/512/1055/1055687.png"
-    row = players_df[players_df['Player_std'] == player_name]
-    if not row.empty:
-        return row.iloc[0]['image url']
-    return "https://cdn-icons-png.flaticon.com/512/1055/1055687.png"
+        return pd.DataFrame(), pd.DataFrame()
 
 DARK_COLORS = {
     'primary': '#3b82f6',
@@ -85,29 +77,32 @@ DARK_COLORS = {
     'light': '#f9fafb'
 }
 
-data, players_df, combos_df = load_data()
+data, trios = load_data()
 
+# --- DASHBOARD HEADER ---
+st.markdown("""
+<div style="text-align: center; padding: 2rem 0;">
+    <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">⚽ Soccer Analytics Dashboard</h1>
+    <p style="color: #9ca3af; font-size: 1.2rem;">Advanced performance analysis with modern visualization</p>
+</div>
+""", unsafe_allow_html=True)
+
+# --- METRICS ---
 if not data.empty:
-    st.markdown("""
-    <div style="text-align: center; padding: 2rem 0;">
-        <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">⚽ Soccer Analytics Dashboard</h1>
-        <p style="color: #9ca3af; font-size: 1.2rem;">Advanced performance analysis with modern visualization</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         st.metric("Total Players", len(data), delta=None)
     with col2:
         avg_fatigue = data['Fatigue Score'].mean()
-        st.metric("Avg Fatigue Score", f"{avg_fatigue:.2f}", delta=f"{avg_fatigue-1.5:.2f}")
+        st.metric("Avg Fatigue Score", f"{avg_fatigue:.2f}")
     with col3:
         high_fatigue = len(data[data['Fatigue Score'] > 2])
-        st.metric("High Fatigue Players", high_fatigue, delta=None)
+        st.metric("High Fatigue Players", high_fatigue)
     with col4:
         sub_early_count = len(data[data['Sub Recommendation'] == 'Sub Early'])
-        st.metric("Sub Early Recommendations", sub_early_count, delta=None)
-    
+        st.metric("Sub Early Recommendations", sub_early_count)
+
+    # --- SIDEBAR FILTERS ---
     st.sidebar.markdown("### 📊 Dashboard Controls")
     unique_recommendations = ['All'] + sorted(data['Sub Recommendation'].unique().tolist())
     unique_positions = ['All'] + sorted([pos.strip() for pos in ','.join(data['Position'].unique()).split(',') if pos.strip()])
@@ -130,6 +125,8 @@ if not data.empty:
         (filtered_data['Fatigue Score'] <= fatigue_range[1])
     ]
     top_performers = filtered_data.nlargest(top_n, 'Overperformance')
+
+    # --- PLAYER OVERPERFORMANCE BAR CHART ---
     col_left, col_right = st.columns([3, 1])
     with col_left:
         st.markdown("### 🎯 Player Overperformance Analysis")
@@ -204,21 +201,21 @@ if not data.empty:
         else:
             st.warning("No players match current filters.")
 
-    # --- OPTIMAL COMBINATIONS SECTION (centered, chart only) ---
+    # --- TRIO CHART (SINGLE DATASET, CENTERED) ---
     st.markdown("---")
     st.markdown("## ⚽ Optimal Player Trio Combination")
-    if not combos_df.empty:
+    if not trios.empty:
         selected_row = st.selectbox(
             "Select a trio to visualize",
-            combos_df.index,
-            format_func=lambda idx: 
-                f"{combos_df.loc[idx, 'Player 1']} + {combos_df.loc[idx, 'Player 2']} + {combos_df.loc[idx, 'Player 3']}"
+            trios.index,
+            format_func=lambda idx: (
+                f"{trios.loc[idx, 'Player 1']} + {trios.loc[idx, 'Player 2']} + {trios.loc[idx, 'Player 3']}"
+            )
         )
-        row = combos_df.loc[selected_row]
+        row = trios.loc[selected_row]
         p1, p2, p3 = row['Player 1'], row['Player 2'], row['Player 3']
-        img1 = get_image_url(p1, players_df)
-        img2 = get_image_url(p2, players_df)
-        img3 = get_image_url(p3, players_df)
+        pos1, pos2, pos3 = row['Position 1'], row['Position 2'], row['Position 3']
+        img1, img2, img3 = row['Img_Url1'], row['Img_Url2'], row['Img_Url3']
         nodes = {
             p1: (0.5, 1.0),
             p2: (0.15, 0.2),
@@ -226,9 +223,9 @@ if not data.empty:
         }
         images = {p1: img1, p2: img2, p3: img3}
         labels = {
-            p1: f"<b>{p1}</b><br>({row['Position 1']})",
-            p2: f"<b>{p2}</b><br>({row['Position 2']})",
-            p3: f"<b>{p3}</b><br>({row['Position 3']})"
+            p1: f"<b>{p1}</b><br>({pos1})",
+            p2: f"<b>{p2}</b><br>({pos2})",
+            p3: f"<b>{p3}</b><br>({pos3})"
         }
         st.markdown('<div style="display: flex; justify-content: center;">', unsafe_allow_html=True)
         fig = go.Figure()
@@ -372,4 +369,4 @@ if not data.empty:
             )
             st.plotly_chart(fig_hist, use_container_width=True)
 else:
-    st.error("❌ No data available. Please check your GitHub CSV files.")
+    st.error("❌ No data available. Please check your data files.")
