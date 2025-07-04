@@ -219,8 +219,27 @@ if not data.empty:
         nodes = {
             p1: (0.5, 1.0),
             p2: (0.15, 0.2),
-            p3: (1.05, 0.2)
+            p3: (0.85, 0.2)
         }
+        for name, (x, y) in nodes.items():
+    if name == p3:
+        # Move image right by increasing x offset, not the node itself
+        img_x = x + 0.08  # Try 0.08 or adjust as needed
+        sizex, sizey, opacity = 0.22, 0.22, 0.85
+    else:
+        img_x = x - 0.08
+        sizex, sizey, opacity = 0.16, 0.16, 1.0
+    fig.add_layout_image(
+        dict(
+            source=images[name],
+            xref="x", yref="y",
+            x=img_x, y=y+0.06,
+            sizex=sizex, sizey=sizey,
+            xanchor="center", yanchor="middle",
+            layer="above",
+            opacity=opacity
+        )
+    )
         images = {p1: img1, p2: img2, p3: img3}
         labels = {
             p1: f"<b>{p1}</b><br>({pos1})",
