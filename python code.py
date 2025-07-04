@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 # Page configuration with dark theme
 st.set_page_config(
     page_title="Soccer Analytics Dashboard",
-    page_icon="⚽",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
